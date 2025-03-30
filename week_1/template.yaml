@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  FastAPILambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src.main.handler  # Entry point for AWS Lambda
+      Runtime: python3.12
+      CodeUri: .                 # Location of code files
+      MemorySize: 512
+      Timeout: 10
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        ApiGateway:
+          Type: Api
+          Properties:
+            Path: /{proxy+}  # Handles all HTTP routes
+            Method: ANY

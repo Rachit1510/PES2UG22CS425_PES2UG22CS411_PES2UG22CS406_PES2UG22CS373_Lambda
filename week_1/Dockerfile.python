@@ -1,0 +1,4 @@
+FROM lambda_python
+WORKDIR /app
+COPY functions/python/example_function.py .
+CMD ["python3", "example_function.py"]

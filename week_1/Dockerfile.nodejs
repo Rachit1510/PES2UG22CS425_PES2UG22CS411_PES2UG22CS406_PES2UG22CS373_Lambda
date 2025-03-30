@@ -1,0 +1,4 @@
+FROM lambda_nodejs
+WORKDIR /app
+COPY functions/javascript/example_function.js .
+CMD ["node", "example_function.js"]
